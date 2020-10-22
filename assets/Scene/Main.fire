@@ -186,7 +186,7 @@
       "array": [
         0,
         0,
-        415.97635840214735,
+        415.69219381653056,
         0,
         0,
         0,
@@ -858,7 +858,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 200,
       "height": 80
     },
     "_anchorPoint": {
@@ -911,8 +911,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "▶️",
-    "_N$string": "▶️",
+    "_string": "play",
+    "_N$string": "play",
     "_fontSize": 80,
     "_lineHeight": 80,
     "_enableWrapText": false,
@@ -945,7 +945,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "f0048c10-f03e-4c97-b9d3-3506e1d58952"
+      "__uuid__": "67e68bc9-dad5-4ad9-a2d8-7e03d458e32f"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -1006,7 +1006,7 @@
       }
     ],
     "_N$interactable": true,
-    "_N$enableAutoGrayEffect": false,
+    "_N$enableAutoGrayEffect": true,
     "_N$transition": 3,
     "transition": 3,
     "_N$normalColor": {
@@ -3827,6 +3827,9 @@
       null,
       null
     ],
+    "btnPlay": {
+      "__id__": 21
+    },
     "_id": "91vjyCp7NChJGAKOLyrmnp"
   },
   {

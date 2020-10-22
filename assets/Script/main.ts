@@ -1,5 +1,3 @@
-import CommonData from "./CommonData";
-import UtilHelper from "./UtilHelper";
 
 const {ccclass, property} = cc._decorator;
 
@@ -17,18 +15,13 @@ export default class Helloworld extends cc.Component {
 
     @property(cc.AudioClip)
     soundList: cc.AudioClip[] = [];
+    @property(cc.Button)
+    btnPlay: cc.Button = null;
 
-    
-    // properties: {
-    //     audioSource: {
-    //         type: cc.AudioSource,
-    //         default: null
-    //     },
-    // }
+    inputNotes: string = '';    //输入的字符
+    currentPlayStrIndex: 0;     //当前播放的字符下标
 
-    inputNotes: string = '';
-
-    noteidList = new Map([
+    matchNoteAndAudio = new Map([
         ['1',0],
         ['2',1],
         ['3',2],
@@ -70,7 +63,13 @@ export default class Helloworld extends cc.Component {
         // init logic
     }
 
+    // init play audio index
+    initPlayIndex(){
+        this.currentPlayStrIndex = 0;
+    }
+
     onClickOk(){
+        this.initPlayIndex();
         this.inputNotes = this.editNote.string;
         this.lblShowNotes.string = this.inputNotes;
     }
@@ -84,25 +83,31 @@ export default class Helloworld extends cc.Component {
     }
 
     onClickPlay(){
-        let str = this.inputNotes;
-        let audio = this.getAudioById(str[0]);
-        if (!audio) {
-            return;
-        }
-        let aid = cc.audioEngine.play(audio, false, 1);
-        if(str[1]){
-            cc.audioEngine.setFinishCallback(aid, () => {
-                audio = this.getAudioById(str[1]);
-                if(audio){
-                    let aid = cc.audioEngine.play(audio, false, 1);
+        this.initPlayIndex();
+        this.btnPlay.interactable = false;
+        let count = this.inputNotes.length-1;
+        let currentTurn = 0;
+        this.schedule(
+            ()=>{
+                currentTurn++;
+                let audio = this.getAudioById();
+                if (audio) {
+                    cc.audioEngine.play(audio, false, 1);
+                }  
+                if(currentTurn == count){
+                    this.btnPlay.interactable = true;
                 }
-            })
-        }
+            }, 0.5, count, 0);
     }
 
-    getAudioById(sid){
-        let nlist = this.noteidList;
-        let audio = this.soundList[nlist.get(this.inputNotes[sid])];
+    getAudioById(){
+        if(this.currentPlayStrIndex == this.inputNotes.length){
+            console.log('播放完毕');            
+            return;
+        }
+        let mlist = this.matchNoteAndAudio;
+        let audio = this.soundList[mlist.get(this.inputNotes[this.currentPlayStrIndex])];
+        this.currentPlayStrIndex++;
         if(!audio){
             return false;
         }
