@@ -5,10 +5,12 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import CViewBase from "./Common/CViewBase";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class cNoteItem extends cc.Component {
+export default class cNoteItem extends CViewBase {
 
     
     @property(cc.Label)

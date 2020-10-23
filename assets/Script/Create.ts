@@ -1,8 +1,9 @@
+import CViewBase from "./Common/CViewBase";
 
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class Helloworld extends cc.Component {
+export default class Create extends CViewBase {
 
     @property(cc.Label)
     lblShowNotes:cc.Label = null;
@@ -100,6 +101,10 @@ export default class Helloworld extends cc.Component {
             }, 0.5, count, 0);
     }
 
+    onClickBack(){
+        this.node.destroy();
+    }
+
     getAudioById(){
         if(this.currentPlayStrIndex == this.inputNotes.length){
             console.log('播放完毕');            
@@ -114,4 +119,5 @@ export default class Helloworld extends cc.Component {
         
         return audio;
     }
+
 }
