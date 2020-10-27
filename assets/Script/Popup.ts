@@ -47,9 +47,13 @@ export default class Popup extends CViewBase {
 
     onClickOk(){
         if(this.modelData.sureCallback){
-            this.modelData.sureCallback;
+            this.modelData.sureCallback();
         }
-        this.destroy();
+        this.node.destroy();
+    }
+
+    onClickCancel(){
+        this.node.destroy();
     }
 
     // update (dt) {}

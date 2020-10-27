@@ -7,11 +7,11 @@ export default class CViewBase extends cc.Component {
     modelData: any;    //
 
     onLoad(){
-        this.initUI();
+        this.initView();
         this.initLogic();
     }
 
-    initUI(){
+    initView(){
         // 初始化界面
     }
 
@@ -25,7 +25,8 @@ export default class CViewBase extends cc.Component {
     }
 
     openPopup(title, content,lblOk, lblCancel, callback){
-        cc.assetManager.loadAny('./prefab/Popup',(err, prefab)=>{
+        cc.resources.load('prefab/Popup', cc.Prefab, (err, prefab)=>{
+            cc.log('woierueokdfmncskdj')
             if(err){
                 cc.log(err);
                 return;
@@ -36,8 +37,9 @@ export default class CViewBase extends cc.Component {
                 content: content,
                 lblOk: lblOk,
                 lblCancel: lblCancel,
-                callback: callback
+                sureCallback: callback
             })
+            this.node.addChild(node);
         })
     }
 }

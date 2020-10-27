@@ -1,4 +1,5 @@
 import CViewBase from "./Common/CViewBase";
+import {UtilHelper} from "./Common/UtilHelper";
 
 const {ccclass, property} = cc._decorator;
 
@@ -26,35 +27,26 @@ export default class MusicScore extends CViewBase {
     }
 
     onLoad(){        
-        let musicList = JSON.parse(cc.sys.localStorage.getItem('MusicList'));
+        let musicList = UtilHelper.getLocalMusicScore();
+        cc.log('mmm:'+JSON.stringify(musicList));
         if(musicList){
             musicList.forEach(element => {
                 let item = cc.instantiate(this.musicItem);
                 if(item){
                     item.getComponent(item.name).updateData(element);
                 }
+                this.musicList.addChild(item);
             });
-        }
-    }
-
-    /**
-     * 保存谱子到本地
-     * @param data {mid:'new Date().getTime()', name:'名称', content:'内容'}
-     */
-    saveMusicScoreToLocal(data){
-        let mlistLocal = JSON.parse(cc.sys.localStorage.getItem('MusicList'));
-        if(mlistLocal){
-            mlistLocal.push(data);
         }else{
-            mlistLocal = data;
+            // 暂无谱子，可添加新谱子
         }
-        cc.sys.localStorage.setItem('MusicList', JSON.stringify(mlistLocal));
     }
 
     onClickClearAll(){
         this.openPopup(null, '确定清空全部列表吗？（操作不可逆）', null, null, ()=>{
             this.musicList.removeAllChildren();
-        });        
+            UtilHelper.removeLocalMusicAll()
+        });
     }
 
     onClickOpenAddWin(){
@@ -67,7 +59,8 @@ export default class MusicScore extends CViewBase {
             name: this.editName.string||this.editCtt.string.slice(0, 7),
             content: this.editCtt.string,
         }
-        this.saveMusicScoreToLocal(data);
+        UtilHelper.saveMusicScoreToLocal(data);
+        this.addMusicPopup.active = false;
     }    
 
     onClickCancel(){
@@ -75,11 +68,6 @@ export default class MusicScore extends CViewBase {
     }
 
     onClickBack(){
-        let midlist = [];
-        this.musicList.children.forEach((item)=>{
-            midlist.push(item.getComponent(item.name).modelData.mid);
-        });
-        cc.log('midlsist:'+JSON.stringify(midlist));
         this.node.destroy();
     }
 

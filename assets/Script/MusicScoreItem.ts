@@ -21,6 +21,7 @@ export default class MusicScoreItem extends CViewBase {
 
     // data :{id:'', name:'', content:''}
     updateData(data){   
+        super.updateData(data);
         this.lbl.string = data.name;
     }
 
