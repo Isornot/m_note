@@ -43,9 +43,12 @@ export default class MusicScore extends CViewBase {
     }
 
     onClickClearAll(){
-        this.openPopup(null, '确定清空全部列表吗？（操作不可逆）', null, null, ()=>{
-            this.musicList.removeAllChildren();
-            UtilHelper.removeLocalMusicAll()
+        this.openPopup({
+            content: '确定清空全部列表吗？（操作不可逆）',
+            cbBtn1: ()=>{
+                this.musicList.removeAllChildren();
+                UtilHelper.removeLocalMusicAll()
+            }
         });
     }
 

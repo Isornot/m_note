@@ -163,8 +163,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 800,
+      "height": 500
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -177,7 +177,7 @@
       "array": [
         0,
         0,
-        415.69219381653056,
+        413.09411760517725,
         0,
         0,
         0,
@@ -713,8 +713,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "练耳",
-    "_N$string": "练耳",
+    "_string": "practice",
+    "_N$string": "practice",
     "_fontSize": 40,
     "_lineHeight": 60,
     "_enableWrapText": false,
@@ -1099,8 +1099,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "谱子",
-    "_N$string": "谱子",
+    "_string": "puzi",
+    "_N$string": "puzi",
     "_fontSize": 40,
     "_lineHeight": 60,
     "_enableWrapText": false,
@@ -1347,7 +1347,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "410fb916-8721-4663-bab8-34397391ace7"
+      "__uuid__": "06af576f-51a2-4490-9b55-e8a4bd202c92"
     },
     "_type": 1,
     "_sizeMode": 0,

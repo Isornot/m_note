@@ -248,9 +248,7 @@
     "_fontSize": 52,
     "_lineHeight": 60,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "5687188f-954f-4864-93ef-23842afffeae"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
@@ -738,9 +736,7 @@
     "_fontSize": 32,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "5687188f-954f-4864-93ef-23842afffeae"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
@@ -1165,9 +1161,7 @@
     "_fontSize": 32,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "5687188f-954f-4864-93ef-23842afffeae"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
@@ -1354,7 +1348,7 @@
     },
     "component": "",
     "_componentId": "8ce5cOSwvxD4JYn/HtyjPAA",
-    "handler": "destroy",
+    "handler": "onClickCancel",
     "customEventData": ""
   },
   {
@@ -1559,11 +1553,17 @@
     "lblContent": {
       "__id__": 8
     },
-    "lblOk": {
+    "lblBtn1": {
       "__id__": 15
     },
-    "lblCancel": {
+    "lblBtn2": {
       "__id__": 26
+    },
+    "nodeOk": {
+      "__id__": 12
+    },
+    "nodeCancel": {
+      "__id__": 23
     },
     "_id": ""
   },

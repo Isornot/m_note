@@ -14,9 +14,7 @@ export default class MusicScoreItem extends CViewBase {
     }
 
     initLogic(){
-        this.node.on('click', ()=>{               
-            this.openPopup(this.modelData.name, this.modelData.content, 'hide', 'hide', null);
-        })   
+
     }
 
     // data :{id:'', name:'', content:''}
@@ -26,8 +24,13 @@ export default class MusicScoreItem extends CViewBase {
     }
 
     onClickRemove(){
-        this.openPopup(null, '确定删除谱子'+this.modelData.name+'吗？（操作不可逆）', null, null, ()=>{
-            this.node.removeFromParent();
-        }); 
+        let info = {
+            parent: this.node.parent.parent,
+            content: '确定删除谱子'+this.modelData.name+'吗？（操作不可逆）',
+            cbBtn1: ()=>{
+                this.node.removeFromParent();
+            }
+        }
+        this.openPopup(info);
     }
 }
