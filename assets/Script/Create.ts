@@ -186,17 +186,21 @@ export default class Create extends CViewBase {
      * 点击生成
      */
     onClickGenerate(){
-        //当前生成只有C4
-        let index = parseInt(this.editNote.string[0]) || 8    //需要非法字符
-        let notes = ''
+        //当前生成只
+        let index = parseInt(this.editNote.string [0]) || 8    //需要非法字符
+        let createdNotes = ''
+        // 取出生成的音符区域
+        let notesArr = Array.from(this.matchNoteAndAudio.keys())
+        cc.log('noteAr234r:'+notesArr)
         for(let i = 0; i<index; i++){
-            notes += Math.floor(Math.random()*index);
+            createdNotes += notesArr[Math.floor(Math.random()*this.matchNoteAndAudio.size)] || '';
         }
-        if(notes && notes.length>0){
+        cc.log('生成lellel：'+createdNotes);
+        if(createdNotes && createdNotes.length>0){
             let info = {
                 mid: new Date().getTime(),
-                name: notes.slice(0, 7),
-                content: notes
+                name: createdNotes.slice(0, 7),
+                content: createdNotes
             }
             this.updateRightNotesInfo(info);
             this.playNotes(this.rightNotes);
